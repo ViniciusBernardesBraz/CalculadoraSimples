@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap');
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        h1{
+            font-size: 50px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+
+        select{
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+
+        input{
+            padding: 20px;
+            width: 85%;
+            margin-bottom: 10px;
+            font-size: 30px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+        label{
+            font-size: 20px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+
+        button{
+            width: 100%;
+            height: 60px;
+            border-radius: 10px;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        p{
+            font-size: 30px;
+            font-family: 'Fira Sans', sans-serif;
+            color: red;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora</h1>
+        <select id="opcao">
+            <option value="0">Tipo Da Operção</option>
+            <option value="1">Adição</option>
+            <option value="2">Subtração</option>
+            <option value="3">Multiplicação</option>
+            <option value="4">Divisão</option>
+        </select>
+
+
+        <label>Primeiro Numero</label>
+        <input type="number" id="n1">
+
+        <label>Segundo Numero</label>
+        <input type="number" id="n2">
+
+        
+        <button onclick="Calcular()">Calcular</button>
+        <button onclick="Limpar()">Limpar</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function Calcular(){
+            let opcao = document.getElementById('opcao').value
+            let n1 = document.getElementById('n1').value
+            let n2 = document.getElementById('n2').value
+            let resultado = document.getElementById('resultado')
+
+            if(opcao == 0){
+                resultado.innerHTML = 'Selecione a Operação'
+            }else if(opcao == 1){
+                let resul = parseFloat(n1) + parseFloat(n2)
+                resultado.innerHTML = resul
+            }else if(opcao == 2){
+                let resul = parseFloat(n1) - parseFloat(n2)
+                resultado.innerHTML = resul
+            }else if(opcao == 3){
+                let resul = parseFloat(n1) * parseFloat(n2)
+                resultado.innerHTML = resul
+            }else if(opcao == 4){
+                let resul = parseFloat(n1) / parseFloat(n2)
+                resultado.innerHTML = resul
+            }
+
+            if(n1 == ''){
+                resultado.innerHTML = 'Digite Um Numero'
+            }else if(n2 == ''){
+                resultado.innerHTML = 'Digite Um Numero'
+            }
+        }
+
+        function Limpar(){
+            n1.value = ''
+            n2.value = ''
+            resultado.innerHTML = ''
+        }
+    </script>
+</body>
+</html>
